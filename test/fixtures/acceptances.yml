@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  summary: MyText
+  state: MyString
+  budget: one
+
+two:
+  summary: MyText
+  state: MyString
+  budget: two

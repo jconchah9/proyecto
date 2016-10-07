@@ -1,0 +1,30 @@
+<aside>
+  <div id="sidebar"  class="nav-collapse ">
+    <ul class="sidebar-menu" id="nav-accordion">
+      <li class="sub-menu">
+        <%= link_to  request_service_admin_index_path do %>
+          <i class="fa fa-external-link-square" aria-hidden="true"></i>
+          Solicitudes
+        <%end%>
+      </li>
+      <li class="sub-menu">
+        <%= link_to companies_path do%>
+        <i class="fa fa-building" aria-hidden="true"></i>
+        Compañias
+        <%end%>
+      </li>
+      <li class="sub-menu">
+        <%= link_to plants_path do%>
+          <i class="fa fa-globe" aria-hidden="true"></i>
+          Plantas
+        <% end %>
+      </li>
+      <li class="sub-menu">
+        <%= link_to sensors_path do %>
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
+        Sensores
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</aside>

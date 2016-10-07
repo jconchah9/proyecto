@@ -1,0 +1,31 @@
+<%= form_for(monitoring) do |f| %>
+  <% if monitoring.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(monitoring.errors.count, "error") %> prohibited this monitoring from being saved:</h2>
+      <ul>
+      <% monitoring.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="input-field">
+    <%= f.hidden_field :sector_id, value:params[:sector_id] %>
+  </div>
+  <div class="input-field">
+    <select id="monitoring_sensor_id" name="monitoring[sensor_id]">
+      <option value="" disabled selected>Selecciona Sensor</option>
+      <% @sensors.each do |s| %>
+        <option value="<%= s.id %>"><%= s.id_sensor %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="input-field">
+    <%= f.submit 'Enlazar', class:'btn'%>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>

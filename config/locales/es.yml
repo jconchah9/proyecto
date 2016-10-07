@@ -1,0 +1,140 @@
+es:
+  activerecord:
+      attributes:
+        company:
+          name: 'Nombre de la empresa'
+          commercial_business: 'Giro comercial'
+          rut: 'Rut'
+        user:
+          email: 'Correo'
+          password: 'Contraseña'
+          password_confirmation: 'Confirmación de contraseña'
+        contract:
+          start_date: 'Fecha de inicio'
+          end_date: 'Fecha de termino'
+        plant:
+          name: 'Nombre de la planta'
+          number: 'Numero'
+          address: 'Dirección'
+          commune: 'Comuna'
+          city: 'Ciudad'
+        sector:
+          name: 'Nombre del sector'
+          plant: 'Planta'
+        budget_document:
+          name: 'Nombre del Archivo'
+          description: 'Descripcion del Archivo'
+          document: 'Archivo'
+          document_content_type: 'Tipo de Archivo'
+        client:
+          telephone: 'Numero de telefono fijo'
+          cellphone: 'Numero de telefono movil'
+          enterprise: 'Nombre de la empresa'
+          name: 'Nombre de contacto'
+        petition:
+          request: 'Archivo'
+          request_content_type: 'Tipo de Archivo'
+        study:
+          feasibility: 'Archivo Factibilidad'
+          feasibility_content_type:: 'Tipo de Archico'
+        analysis:
+          summary: 'Resumen'
+        calendar:
+          visit_date: 'Fecha de visita'
+          sumary: 'Resumen'
+        document_analysis:
+          document: 'Documento'
+          document_content_type: 'Tipo de Documento'
+      errors:
+        messages:
+          not_saved: 'Error al guardar'
+        models:
+          plant:
+            attributes:
+              name:
+                blank: 'no puede estar vacio'
+              number:
+                blank: 'no puede estar vacio'
+              address:
+                blank: 'no puede estar vacia'
+              commune:
+                blank: 'no puede estar vacia'
+              city:
+                blank: 'no puede estar vacia'
+          sector:
+            attributes:
+              name:
+                blank: 'no puede estar vacio'
+              plant:
+                name:
+                  blank: 'no puede estar vacio'
+          company:
+            attributes:
+              name:
+                blank: 'no puede estar vacio'
+              commercial_business:
+                blank: 'no puede estar vacio'
+              rut:
+                blank: 'no puede estar vacio'
+          contract:
+            attributes:
+              start_date:
+                blank: 'no puede estar vacia'
+              end_date:
+                blank: 'no puede estar vacia'
+          user:
+            attributes:
+              email:
+                not_found: "no existe"
+                blank: 'no puede estar vacio'
+                taken: 'ya esta utilizado'
+              password:
+                blank: 'no puede estar vacia'
+                too_short: 'es muy corta'
+              password_confirmation:
+                blank: 'no puede estar vacia'
+            invalid: 'Ingrese correctamente los datos'
+          budget_document:
+            attributes:
+              description:
+                blank: 'se encuentra en blanco'
+              document:
+                blank: 'se encuentra vacio'
+              document_content_type:
+                invalid: 'es invalido, debe ser excel'
+          client:
+            attributes:
+              telephone:
+                not_a_number: 'formato incorrecto'
+                too_short: 'no cumple el minimo de caracteres requerido'
+              cellphone:
+                not_a_number: 'formato incorrecto'
+                too_short: 'no cumple el minimo de caracteres requerido'
+          petition:
+            attributes:
+              request:
+                blank: 'debe seleccionar un documento para enviar'
+              request_content_type:
+                invalid: 'invalido, debe ser PDF'
+          study:
+            attributes:
+              feasibility:
+                blank: 'debe subir archivo'
+              feasibility_content_type:
+                invalid: 'invalido'
+          analysis:
+            attributes:
+              summary:
+                blank: 'no puede estar en blanco'
+          calendar:
+            attributes:
+              sumary:
+                blank: 'no puede estar en blanco'
+              visit_date:
+                blank: 'no puede estar en blanco'
+          document_analysis:
+            attributes:
+              document:
+                blank: 'no puede estar vacio'
+              document_content_type:
+                invalid: 'invalido'

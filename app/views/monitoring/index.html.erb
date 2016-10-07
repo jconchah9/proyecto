@@ -1,0 +1,46 @@
+<div class="container" ng-app="reportApp" ng-controller="reportController">
+  numero de registro {{qty}}
+
+
+<table class="table table-bordered">
+  <thead>
+    <th>
+      ID Sensor
+    </th>
+    <th>
+      Lectura
+    </th>
+    <th>
+      Fecha
+    </th>
+    <tr ng-repeat="report in reports">
+      <td>{{report.sensor_id}}</td>
+      <td>{{report.lectura}}%</td>
+      <td>{{report.date_create | date:'medium'}}</td>
+    </tr>
+
+  </thead>
+</table>
+</div>
+<script >
+angular.module("reportApp",[])
+  .controller("reportController",function($scope,$http){
+    $scope.reports =[];
+    $scope.qty = 0;
+    $http.get("http://192.168.0.10:8080/api/monitorings/1")
+      .success(function(data){
+        console.log(data);
+        $scope.reports=data;
+        $scope.qty = data.length;
+
+
+
+      })
+      .error(function(err){
+
+      });
+  });
+
+
+
+</script>

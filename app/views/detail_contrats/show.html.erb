@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @detail_contrat.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @detail_contrat.end_date %>
+</p>
+
+<p>
+  <strong>Qty sensores:</strong>
+  <%= @detail_contrat.qty_sensores %>
+</p>
+
+<p>
+  <strong>Contract:</strong>
+  <%= @detail_contrat.contract %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @detail_contrat.group %>
+</p>
+
+<p>
+  <strong>Sector:</strong>
+  <%= @detail_contrat.sector %>
+</p>
+
+<%= link_to 'Edit', edit_detail_contrat_path(@detail_contrat) %> |
+<%= link_to 'Back', detail_contrats_path %>

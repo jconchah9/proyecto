@@ -1,0 +1,33 @@
+<%@petition.each do |p| %>
+	<%
+		e = 'cd-warning' if p.state=='pendiente'
+		e = 'cd-success' if p.state=='visto'
+	%>
+	<div class="cd-timeline-block">
+		<div class="cd-timeline-img <%= e %>">
+		</div>
+		<div class="cd-timeline-content">
+      <div class="panel">
+        <div class="panel-body">
+					<div class="panel-title">
+						Solicitud
+					</div>
+          <p>Nombre de la empresa: <%= p.client.enterprise %></p>
+					<p>Nombre contacto: <%= p.client.name %> </p>
+					<p>Telofono: <%= p.client.telephone %></p>
+					<p>Correo: <%= p.client.email %></p>
+					<p>Documento Adjunto:<%= link_to ' Ver Documento', petition_path(p), class: "orange-text" %></p>
+					<p>Resumen: <%= p.summary %></p>
+					<div class="action">
+	          <% if p.may_ver? %>
+	            <%= link_to 'Cambiar a Visto', "/petitions/#{p.id}/ver", method: :put,class:"label label-info" %>
+	          <% else %>
+	            <%= link_to 'Registrar Estudio Interno',new_study_path(petition_id: p.id), class:'btn btn-default' %>
+	          <% end %>
+	        </div>
+        </div>
+				<span class="cd-date"><%= p.created_at.strftime('%d-%m-%Y %H:%m') %></span>
+      </div>
+		</div>
+	</div>
+<% end %>

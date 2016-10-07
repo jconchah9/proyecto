@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sector:</strong>
+  <%= @monitoring.sector.id %>
+</p>
+
+<p>
+  <strong>Sensor:</strong>
+  <%= @monitoring.sensor.id %>
+</p>
+
+<%= link_to 'Edit', edit_monitoring_path(@monitoring) %> |
+<%= link_to 'Back', monitorings_path %>

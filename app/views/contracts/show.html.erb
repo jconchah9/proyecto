@@ -1,0 +1,49 @@
+<div class="mt">
+  <div class="showback">
+    <div class="panel">
+      <div class="card-action">
+        <%= link_to 'Atras', :back %>
+      </div>
+      <div class="panel-body">
+        <h4>
+          <i class="fa fa-angle-right"></i>
+          Contrato
+        </h4>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <p class="orange-text">Fecha de Inicio del servicio: <%= @contract.start_date.strftime('%d-%m-%y') %></p>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <p class="orange-text">Fecha de cancelación del servicio: <%= @contract.end_date.strftime('%d-%m-%y') %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-4">
+            <p>Nombre de empresa: <%= @contract.company.name.capitalize %></p>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <p>Rut: <%= @contract.company.rut.capitalize %></p>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <p>Rubro: <%= @contract.company.commercial_business.capitalize %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-4">
+            <p>Nombre de la Planta <%= @contract.detail_contract.sector.plant.name %></p>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <p>Nombre del sector: <%= @contract.detail_contract.sector.name %></p>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <p>Ubicacion de la planta: <%= @contract.detail_contract.sector.plant.address %> #<%= @contract.detail_contract.sector.plant.number %>, <%= @contract.detail_contract.sector.plant.commune.capitalize %>, <%= @contract.detail_contract.sector.plant.city.capitalize %> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

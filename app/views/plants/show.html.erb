@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="card black-text">
+
+    <div class="card-content">
+      <div class="card-title">
+        <%= @plant.name %>
+      </div>
+      <p>
+        <strong>Direccion:</strong>
+        <%= @plant.address %>
+      </p>
+
+      <p>
+        <strong>Numero:</strong>
+        <%= @plant.number %>
+      </p>
+
+      <p>
+        <strong>Comuna:</strong>
+        <%= @plant.commune %>
+      </p>
+
+      <p>
+        <strong>Ciudad:</strong>
+        <%= @plant.city %>
+      </p>
+
+    </div>
+    <div class="card-action">
+      <%= link_to 'Editar', edit_plant_path(@plant) %>
+      <%= link_to 'Regresar', plants_path %>
+    </div>
+  </div>
+</div>

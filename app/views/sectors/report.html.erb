@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="card-content">
+    <div class="card-title">
+      Reporte del sector - Semana Actual
+    </div>
+      <%= line_chart @daily, min: 0, max: 100, xtitle: "Fecha", ytitle: "humedad CB", chart:{ zoomType: 'x'} %>
+  </div>
+</div>

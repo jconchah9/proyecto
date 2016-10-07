@@ -1,0 +1,38 @@
+<%= form_for(budget_document) do |f| %>
+
+  <% if budget_document.errors.any? %>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong><%= pluralize(budget_document.errors.count, "error") %></strong> al tratar de enviar la solicitud.
+      <% budget_document.errors.full_messages.each do |message| %>
+        <ul>
+          <li><strong><%= message %></strong></li>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= f.fields_for :budget do |budget| %>
+    <%= render 'budget_fields', f: budget %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class:"form-control", required:true, placeholder:"Nombre del Archivo" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class:"form-control", required:true, placeholder:"Describa un resumen del Archivo" %>
+  </div>
+
+  <div class="form-group">
+    <span>Subir Archivo</span>
+    <%= f.file_field :document, required:true %>
+  </div>
+
+
+  <div class="form-group pull-right">
+    <%= f.submit "Guardar", class:"btn btn-success" %>
+  </div>
+<% end %>

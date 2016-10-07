@@ -1,0 +1,3 @@
+# Comment
+module CompaniesHelper
+end

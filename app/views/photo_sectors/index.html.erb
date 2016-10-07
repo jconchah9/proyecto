@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Photo Sectors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type file</th>
+      <th>Descripcion</th>
+      <th>Document</th>
+      <th>Sector</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @photo_sectors.each do |photo_sector| %>
+      <tr>
+        <td><%= photo_sector.name %></td>
+        <td><%= photo_sector.type_file %></td>
+        <td><%= photo_sector.descripcion %></td>
+        <td><%= photo_sector.document %></td>
+        <td><%= photo_sector.sector %></td>
+        <td><%= link_to 'Show', photo_sector %></td>
+        <td><%= link_to 'Edit', edit_photo_sector_path(photo_sector) %></td>
+        <td><%= link_to 'Destroy', photo_sector, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Photo Sector', new_photo_sector_path %>

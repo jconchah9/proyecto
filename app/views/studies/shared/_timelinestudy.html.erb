@@ -1,0 +1,41 @@
+<% @study.each do |s| %>
+
+  <%
+    e = 'cd-warning' if s.state=='en_analisis'
+    e = 'cd-success' if s.state=='aceptado'
+    e = 'cd-danger' if s.state=='rechazado'
+  %>
+  <div class="cd-timeline-block">
+    <div class="cd-timeline-img <%= e %>">
+    </div>
+    <div class="cd-timeline-content">
+      <div class="panel ">
+        <div class="panel-body">
+          <div class="panel-title">
+            Estudio Factibilidad
+          </div>
+          <p>Factibilidad: <%= link_to 'Ver Documento', study_path(s.id), class: 'orange-text' %> </p>
+          <p>Resumen: <%= s.summary %></p>
+
+          <div class="card-action">
+            <% if s.state==="en_analisis" %>
+            <div class="btn-group">
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Cambiar Estado <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Aceptar","/studies/#{s.id}/aceptar",method: :put%></li>
+                <li><%= link_to "Rechazar","/studies/#{s.id}/rechazar", method: :put%></li>
+              </ul>
+            </div>
+            <% end %>
+            <% if s.state == 'aceptado' %>
+              <%= link_to 'Registrar Visita',new_calendar_path(study_id: s.id), class: 'btn btn-default' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <span class="cd-date"><%= s.created_at.strftime('%d-%m-%Y %H:%m') %></span>
+    </div>
+  </div>
+<% end %>

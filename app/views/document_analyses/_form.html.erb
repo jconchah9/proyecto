@@ -1,0 +1,36 @@
+<%= form_for(document_analysis) do |f| %>
+  <% if document_analysis.errors.any? %>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong><%= pluralize(document_analysis.errors.count, "error") %></strong> al tratar de enviar la solicitud.
+      <% document_analysis.errors.full_messages.each do |message| %>
+        <ul>
+          <li><strong><%= message %></strong></li>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label "Nombre" %>
+    <%= f.text_field :name,class:"form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Descripcion del archivo" %>
+    <%= f.text_area :descripcion,class:"form-control", required:true, placeholder:"Descripcion del archivo" %>
+  </div>
+
+  <div class="form-group">
+    <div class="">
+      <span>Subir Documento de Analisis</span>
+      <%= f.file_field :document, required: true %>
+    </div>
+  </div>
+
+  <%= f.hidden_field :analysis_id, value: params[:analysis_id] %>
+
+  <div class="form-group">
+    <%= f.submit "Guardar", class:"btn btn-success pull-right" %>
+  </div>
+<% end %>

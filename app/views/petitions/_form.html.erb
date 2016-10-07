@@ -1,0 +1,69 @@
+<%= form_for(petition) do |f| %>
+<% if @petition.errors.any? %>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong><%= pluralize(@petition.errors.count, "error") %></strong> al tratar de enviar la solicitud.
+      <% @petition.errors.full_messages.each do |message| %>
+        <ul>
+          <li><strong><%= message %></strong></li>
+        </ul>
+      <% end %>
+  </div>
+<% end %>
+  <div class="client">
+    <%= f.fields_for :client do |c| %>
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <div class="form-group">
+          <%= c.label :enterprise, 'Nombre de la empresa', class:'active' %>
+          <%= c.text_field :enterprise, required: true, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="form-group">
+          <%= c.label :name, 'Nombre de contacto', class:'active' %>
+          <%= c.text_field :name, class: 'form-control', required: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <div class="form-group">
+          <%= c.label :telephone, 'Telefono', class:'active' %>
+          <%= c.text_field :telephone, class:"form-control", required: true %>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="form-group">
+          <%= c.label 'Correo', class:'active' %>
+          <%= c.email_field :email, class:"form-control", required: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="form-group">
+          <%= c.label 'Resumen', class:'active' %>
+          <%= f.text_area :summary, as: :text, class:"form-control", required: true %>
+        </div>
+      </div>
+      <div class="col-md-12 col-sm-12">
+        <div class="form-group">
+          <div class="file-field">
+            <span>Documento de Requerimiento(Solo PDF)</span>
+            <div class="">
+              <%= f.file_field :request, required: true %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="form-group">
+        <%= f.submit "Registrar Solicitud", class:"btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

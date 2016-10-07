@@ -1,0 +1,57 @@
+<%@presupuesto.each do |b| %>
+  <%
+    e = 'cd-warning' if b.state=='en_curso'
+    e = 'cd-success' if b.state=='aceptado'
+    e = 'cd-danger' if b.state=='rechazado'
+    e = 'label-info' if b.state=='enviado'
+  %>
+  <div class="cd-timeline-block">
+    <div class="cd-timeline-img <%= e %>">
+    </div>
+    <div class="cd-timeline-content">
+      <div class="panel">
+        <div class="panel-body">
+          <div class="panel-title">
+            Presupuesto del analisis N°<%= b.analysis_id %>
+          </div>
+          <p>el presupuesto se encuentra <strong> <%= b.state %></strong></p>
+          <p>Resumen del presupuesto: <%= b.summary %></p>
+          <% BudgetDocument.where(budget_id: b.id).each do |e| %>
+
+          <div class="media">
+              <p>Presupuesto: <%= link_to 'Ver Documento', budget_document_path(e.id) %></p>
+          </div>
+          <% end %>
+
+          <div class="card-action">
+
+            <% if b.state==="en_curso" %>
+              <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Cambiar Estado <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Enviar","/budgets/#{b.id}/enviar", method: :put%></li>
+                  <li><%= link_to "Rechazar","/budgets/#{b.id}/rechazar", method: :put%></li>
+                </ul>
+              </div>
+           <% elsif b.state==="enviado" %>
+             <div class="btn-group">
+               <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Cambiar Estado <span class="caret"></span>
+               </button>
+               <ul class="dropdown-menu">
+                 <li><%= link_to "Aceptar","/budgets/#{b.id}/aceptar", method: :put%></li>
+                 <li><%= link_to "Rechazar","/budgets/#{b.id}/rechazar", method: :put%></li>
+               </ul>
+             </div>
+          <%elsif b.state==="aceptado"%>
+            <%= link_to "Registrar Aceptacion", new_acceptance_path(budget_id: b.id), class:"btn btn-default"%>
+          <% end %>
+          </div>
+        </div>
+      </div>
+      <span class="cd-date"><%= b.created_at.strftime('%d-%m-%Y %H:%m') %></span>
+    </div>
+  </div>
+<% end %>

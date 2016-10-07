@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="card black-text">
+    <div class="card-action">
+      <%= link_to 'Editar', edit_petition_path(@petition) %>
+    </div>
+    <div class="card-content">
+      <div class="left">
+        <p>Nombre de la empresa: <%= @petition.client.enterprise %></p>
+        <p>Nombre de contacto: <%= @petition.client.name %></p>
+        <p>Telofono: <%= @petition.client.telephone %></p>
+        <p>Correo: <%= @petition.client.email %></p>
+        <p>Resumen: <%= @petition.summary %></p>
+      </div>
+      <embed src='<%= @petition.request %>' style="width:100%;" height="1200">
+    </div>
+  </div>
+</div>

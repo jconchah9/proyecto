@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Budget Documents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Descripcion</th>
+      <th>Documento</th>
+      <th>Budget</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @budget_documents.each do |budget_document| %>
+      <tr>
+        <td><%= budget_document.name %></td>
+        <td><%= budget_document.descripcion %></td>
+        <td><%= budget_document.document_file_name %></td>
+        <td><%= budget_document.budget %></td>
+        <td><%= link_to 'Show', budget_document %></td>
+        <td><%= link_to 'Edit', edit_budget_document_path(budget_document) %></td>
+        <td><%= link_to 'Destroy', budget_document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Budget Document', new_budget_document_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sumary: MyText
+  state: MyString
+  calendar: one
+
+two:
+  sumary: MyText
+  state: MyString
+  calendar: two

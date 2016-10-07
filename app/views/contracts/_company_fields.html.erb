@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="panel-title">
+      Informacion de la empresa
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-4">
+        <div class="form-group">
+          <%= f.label :name, 'Nombre de la empresa', class:'active black-text' %>
+          <%= f.text_field :name, class: 'form-control', required: :true %>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4">
+        <div class="form-group">
+          <%= f.label :commercial_business, 'Giro comercial', class:'active black-text' %>
+          <%= f.text_field :commercial_business, class: 'form-control', required: :true %>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4">
+        <div class="form-group">
+          <%= f.label :rut, 'Rut', class:'active black-text' %>
+          <%= f.text_field :rut, class: 'form-control', required: :true %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

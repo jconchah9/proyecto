@@ -1,0 +1,12 @@
+<div class="card black-text">
+  <div class="card-content">
+    <div class="card-title">
+      Editar Presupuesto
+    </div>
+    <%= render 'form', budget: @budget %>
+  </div>
+  <div class="card-action">
+    <%= link_to 'Mostar', @budget %> |
+    <%= link_to 'Atras', :back %>
+  </div>
+</div>

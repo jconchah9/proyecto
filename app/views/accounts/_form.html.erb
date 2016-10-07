@@ -1,0 +1,42 @@
+<%= form_for(account, url: accounts_path) do |f| %>
+  <%= f.hidden_field :company_id%>
+  <%= f.fields_for :user do |u|%>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= u.label 'Correo' %>
+          <%= u.email_field :email, class: 'form-control', required: :true %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= u.label 'Contraseña' %>
+          <%= u.password_field :password, class:'form-control', required: :true %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= u.label 'Confirmar Contraseña' %>
+          <%= u.password_field :password_confirmation, class:'form-control', required: :true %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= u.label 'Nombre' %>
+          <%= u.text_field :name, class:'form-control', required: :true %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= u.label 'Apellido' %>
+          <%= u.text_field :last_name, class:'form-control', required: :true %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="form-group pull-right">
+    <%= f.submit "Guardar", class: 'btn btn-success' %>
+  </div>
+<% end %>

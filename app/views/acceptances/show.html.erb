@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="card black-text">
+    <div class="card-action">
+      <%= link_to 'Editar', edit_acceptance_path(@acceptance) %>
+      <%= link_to 'Atras', :back %>
+    </div>
+    <div class="card-content">
+      <div class="card-title">
+        Aceptación
+      </div>
+      <p id="notice"><%= notice %></p>
+      <p>Resumen: <%= @acceptance.summary %> </p>
+      <p>Estado: <%= @acceptance.state %></p>
+      <p>Presupuesto: <%= link_to 'Ver Detalle', budget_path(@acceptance.budget_id), class: 'orange-text' %></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  measuring: 1.5
+  sensor: one
+  sent_at: 2017-07-07 06:00:35
+
+two:
+  measuring: 1.5
+  sensor: two
+  sent_at: 2017-07-07 06:00:35

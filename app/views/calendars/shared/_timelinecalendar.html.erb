@@ -1,0 +1,41 @@
+<% @calendar.each do |c| %>
+<%
+  e = 'cd-warning' if c.state=='en_curso'
+  e = 'cd-success' if c.state=='finalizada'
+  e = 'cd-danger' if c.state=='rechazada'
+%>
+  <div class="cd-timeline-block">
+    <div class="cd-timeline-img <%= e %>">
+    </div>
+    <div class="cd-timeline-content">
+      <div class="panel">
+        <div class="panel-body">
+          <div class="panel-title">
+            Calendario Visita
+          </div>
+          <p>La visita se encuentra <strong><%= c.state %></strong></p>
+          <p>Fecha de visita: <span class="orange-text"><%= c.visit_date.strftime('%d-%m-%Y') %></span></p>
+          <p>Resumen: <%= c.sumary %></p>
+
+          <div class="card-action">
+            <% if c.may_finalizar? or c.may_rechazar? %>
+            <div class="btn-group">
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Cambiar Estado <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Finalizar","/calendars/#{c.id}/finalizar", method: :put%></li>
+                <li><%= link_to "Rechazar","/calendars/#{c.id}/rechazar",method: :put%></li>
+              </ul>
+            </div>
+           <% end %>
+           <% if c.state==="finalizada" %>
+            <%= link_to "agregar analisis",new_analysis_path(calendar_id: c.id), class: 'btn btn-default'%>
+           <% end %>
+          </div>
+        </div>
+      </div>
+      <span class="cd-date"><%= c.created_at.strftime('%d-%m-%Y %H:%m') %></span>
+    </div>
+  </div>
+<% end %>

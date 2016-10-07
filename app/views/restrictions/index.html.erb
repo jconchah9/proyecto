@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-content">
+    <div class="card-title">
+      Restriccion Del Sector
+    </div>
+    <% if @restriction.nil? %>
+      No hay restriccion para este sector
+      <%= link_to 'Agregar Restriction', new_sector_restriction_path, class: 'orange-text'%>
+    <% else%>
+      <table>
+        <thead>
+          <tr>
+            <th>Minimo</th>
+            <th>Maximo</th>
+            <th>Fecha de Cosesha</th>
+            <th>-</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @restriction.each do |r| %>
+          <tr>
+            <td><%= r.minimum_value %></td>
+            <td><%= r.maximum_value %></td>
+            <td><%= r.harvest_date %></td>
+            <td><%= link_to 'Editar', edit_sector_restriction_path(id: r.id), class:'orange-text' %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

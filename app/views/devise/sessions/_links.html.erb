@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+<a class='dropdown-button' data-beloworigin="true" data-activates='dropdown2'>Usuario</a>
+<ul id="dropdown2" class="dropdown-content">
+  <li>
+    <%= link_to "Cerrar sesion", destroy_user_session_path, method: :delete, class:'green-text' %>
+  </li>
+  <li>
+    <%= link_to "Configurar Cuenta", edit_user_registration_path, class:'green-text' %>
+  </li>
+</ul>
+<% else %>
+<ul>
+  <li>
+    <%= link_to "Iniciar sesión", new_user_session_path %>
+  </li>
+</ul>
+<% end %>

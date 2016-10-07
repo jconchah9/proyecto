@@ -1,0 +1,25 @@
+<%= form_for(analysis) do |f| %>
+<% if analysis.errors.any? %>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong><%= pluralize(analysis.errors.count, "error") %></strong> al tratar de enviar la solicitud.
+    <% analysis.errors.full_messages.each do |message| %>
+      <ul>
+        <li><strong><%= message %></strong></li>
+      </ul>
+    <% end %>
+  </div>
+<% end %>
+
+  <div class="form-group">
+    <%= f.label "Resumen" %>
+    <%= f.text_area :summary, class: 'form-control' %>
+  </div>
+
+  <%= f.hidden_field :calendar_id, value:params[:calendar_id] %>
+
+
+  <div class="form-group">
+    <%= f.submit "Guardar", class:"btn btn-success pull-right" %>
+  </div>
+<% end %>

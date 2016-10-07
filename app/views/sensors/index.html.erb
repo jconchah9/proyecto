@@ -1,0 +1,44 @@
+<div class="mt">
+  <div class="showback">
+    <h4>
+      <i class="fa fa-angle-right"></i>
+      Sensores
+    </h4>
+    <%= link_to 'Nuevo Sensor', new_sensor_path, class:'btn btn-default' %>
+    <table class="table table-responsive table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ID sensor</th>
+          <th>Tipo</th>
+          <th>Empresa</th>
+          <th>Plant - Sector</th>
+          <th>-</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @sensors.each do |sensor| %>
+          <tr>
+            <td><%= sensor.id %></td>
+            <td><%= sensor.id_sensor %></td>
+            <td><%= sensor.type_sensor.capitalize %></td>
+            <td><%= sensor.monitoring.sector.detail_contract.contract.company.name.capitalize %></td>
+            <td><%= "#{sensor.monitoring.sector.plant.name.capitalize}" + ' - ' + "#{sensor.monitoring.sector.name.capitalize}" %></td>
+            <td><%= link_to sensor, class: 'label label-success' do %>
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                  Mostrar
+                <% end %>
+                <%= link_to edit_sensor_path(sensor), class: 'label label-warning' do %>
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  Editar
+                <% end %>
+            </td>
+            <!-- <td><%= link_to 'Eliminar', sensor, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @sensors, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

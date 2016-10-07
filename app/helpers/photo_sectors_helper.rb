@@ -1,0 +1,2 @@
+module PhotoSectorsHelper
+end

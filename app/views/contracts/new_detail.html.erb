@@ -1,0 +1,34 @@
+<div class="mt">
+  <div class="showback">
+    <div class="panel">
+      <div class="panel-body">
+        <h4>
+          <i class="fa fa-angle-right"></i>
+          Generar Contrato Fase 2
+        </h4>
+        <% if @detail_contract.errors.any? %>
+          <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong><%= pluralize(@detail_contract .errors.count, "error") %></strong> al tratar de enviar la solicitud.
+              <% @detail_contract .errors.full_messages.each do |message| %>
+                <ul>
+                  <li><strong><%= message %></strong></li>
+                </ul>
+              <% end %>
+          </div>
+        <% end %>
+        <%= form_for @detail_contract, url: create_detail_contracts_path(@detail_contract) do |detail| %>
+          <%= detail.fields_for :sector do |sector| %>
+            <%= sector.fields_for :plant do |plant| %>
+              <%= render 'plant_fields', {f: plant, s: sector} %>
+            <%end  %>
+          <% end %>
+          <%= detail.hidden_field :contract_id, value: params[:contract_id] %>
+          <div class="form-group pull-right">
+            <%= detail.submit 'Generar', class: 'btn btn-success' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

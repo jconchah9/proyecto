@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="card black-text">
+    <div class="card-action">
+      <%= link_to 'Editar', edit_document_analysis_path(@document_analysis) %>
+      <%= link_to 'Atras', history_admin_index_path(id: @document_analysis.analysis.calendar.study.petition_id) %>
+    </div>
+    <div class="card-content">
+      <div class="card-title">
+        Documento de analisis
+      </div>
+      <div class="left">
+        <p id="notice"><%= notice %></p>
+        <p>Nombre: <%= @document_analysis.name %></p>
+        <p>Tipo de documento: <%= @document_analysis.type_file %></p>
+        <p>Descripción: <%= @document_analysis.descripcion %></p>
+        <p>Analisis: <%= @document_analysis.analysis.id %> </p>
+      </div>
+      <embed src="<%= @document_analysis.document %>" style="width:100%;" height="1200">
+    </div>
+  </div>
+</div>

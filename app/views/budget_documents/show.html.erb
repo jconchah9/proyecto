@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="card black-text">
+    <div class="card-action">
+      <%= link_to 'Editar', edit_budget_document_path(@budget_document) %>
+      <%= link_to 'Atras', history_admin_index_path(id: @budget_document.budget.analysis.calendar.study.petition_id) %>
+    </div>
+    <div class="card-content">
+      <p>
+        <strong>Name:</strong>
+        <%= @budget_document.name %>
+      </p>
+
+      <p>
+        <strong>Descripcion:</strong>
+        <%= @budget_document.description %>
+      </p>
+
+      <p>
+        <strong>Documento:</strong>
+        <%= @budget_document.document_file_name %>
+      </p>
+
+      <p>
+        <strong>Budget:</strong>
+        <%= @budget_document.budget.id %>
+      </p>
+      <div class="">
+        <embed  src="<%= @budget_document.document %>" width="300" height="300">
+      </div>
+    </div>
+  </div>
+</div>

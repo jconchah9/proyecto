@@ -1,0 +1,6 @@
+<div class="form-group">
+  <%= f.label :summary, 'Resumen' %>
+  <%= f.text_area :summary, class:"form-control", required:true, placeholder:"Describa un resumen del presupuesto" %>
+</div>
+
+<%= f.hidden_field :analysis_id, value:params[:analysis_id] %>

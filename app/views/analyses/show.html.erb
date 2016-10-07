@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="card">
+    <div class="card-action">
+      <%= link_to 'Editar', edit_analysis_path(@analysis) %>
+      <%= link_to 'Atras', history_admin_index_url(@analysis.calendar.study.petition_id) %>
+    </div>
+    <div class="card-content">
+      <div class="card-title">
+        Analisis
+      </div>
+      <p>Resumen: <%= @analysis.summary %></p>
+      <p>Estado: <%= @analysis.state %></p>
+      <p>Calendario: <%= link_to 'Ver Detalle', calendar_path(@analysis.calendar), class: 'orange-text' %></p>
+    </div>
+  </div>
+</div>

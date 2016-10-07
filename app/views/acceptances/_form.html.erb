@@ -1,0 +1,22 @@
+<%= form_for(acceptance) do |f| %>
+  <% if acceptance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(acceptance.errors.count, "error") %> prohibited this acceptance from being saved:</h2>
+
+      <ul>
+      <% acceptance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label "Resumen" %>
+    <%= f.text_area :summary, class:"form-control" %>
+  </div>
+  <%= f.hidden_field :budget_id, value:params[:budget_id] %>
+  <div class="form-group pull-right">
+    <%= f.submit "Guardar", class:"btn btn-success" %>
+  </div>
+<% end %>

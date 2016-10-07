@@ -1,0 +1,44 @@
+<%@aceptacion.each do |a| %>
+  <%
+    e = 'cd-warning' if a.state=='pendiente'
+    e = 'cd-success' if a.state=='aceptado'
+    e = 'cd-danger' if a.state=='rechazado'
+  %>
+  <div class="cd-timeline-block">
+    <div class="cd-timeline-img <%= e %>">
+    </div>
+    <div class="cd-timeline-content">
+      <div class="panel">
+        <div class="panel-body">
+          <div class="panel-title">
+            Aceptacion del presupuesto N° <%= a.budget_id %>
+          </div>
+          <p>La aceptacion se encuentra <strong><%= a.state %></strong></p>
+          <p>Resumen de la aceptacion:</p>
+          <p><%= a.summary %></p>
+
+          <div class="card-action">
+            <% if a.state==="pendiente" %>
+              <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Cambiar Estado <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Aceptar","/acceptances/#{a.id}/aceptar", method: :put%></li>
+                  <li><%= link_to "Rechazar","/acceptances/#{a.id}/rechazar",method: :put%></li>
+                </ul>
+              </div>
+            <% elsif a.state ==="aceptado" and a.contract.nil? %>
+              <%= link_to "Generar Contrato", new_contract_path(id: a.id), class: 'btn btn-default' %>
+            <% elsif a.state ==="aceptado" and a.contract.present? %>
+              <h4>
+                <%= link_to "Ver Contrato", contract_path(id: a.contract.id), class: 'label label-success' %>
+              </h4>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <span class="cd-date"><%= a.created_at.strftime('%d-%m-%Y %H:%m') %></span>
+    </div>
+  </div>
+<% end %>

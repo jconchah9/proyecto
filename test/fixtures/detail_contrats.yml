@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 2016-10-27 02:10:27
+  end_date: 2016-10-27 02:10:27
+  qty_sensores: 1
+  contract: one
+  group: one
+  sector: one
+
+two:
+  start_date: 2016-10-27 02:10:27
+  end_date: 2016-10-27 02:10:27
+  qty_sensores: 1
+  contract: two
+  group: two
+  sector: two

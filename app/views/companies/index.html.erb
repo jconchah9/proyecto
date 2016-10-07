@@ -1,0 +1,39 @@
+
+
+<div class="mt">
+  <div class="showback">
+    <h4>
+      <i class="fa fa-angle-right"></i>
+      Compañias
+    </h4>
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Rubro</th>
+          <th>Rut</th>
+          <th>-</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @companies.each do |company| %>
+            <tr>
+              <td><%= company.name %></td>
+              <td><%= company.commercial_business %></td>
+              <td><%= company.rut %></td>
+              <td>
+                <%= link_to company, class: 'label label-success' do %>
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                  Mostrar
+                <% end %>
+                <%= link_to edit_company_path(company), class: 'label label-warning' do %>
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  Editar
+                <% end%>
+              </td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

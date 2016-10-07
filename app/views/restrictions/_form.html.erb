@@ -1,0 +1,44 @@
+<%= form_for(restriction) do |f| %>
+  <% if restriction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@restriction.errors.count, "error") %> prohibited this plant from being saved:</h2>
+      <ul>
+      <% restriction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :minimum_value, 'Cb minimo' %>
+        <%= f.text_field :minimum_value, class: 'form-control', required: true %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :maximum_value, 'Cb maximo' %>
+        <%= f.text_field :maximum_value, class: 'form-control', required: true %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :harvest_date, "Fecha para cosechar" %> <br>
+        <%= f.text_field :harvest_date, class: 'datepicker form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Guardar",class:"btn btn-success pull-right"%>
+  </div>
+
+  <%= f.hidden_field :sector_id, value: params[:sector_id] %>
+<% end %>
+<script type="text/javascript">
+  $('.datepicker').pickadate({
+  selectMonths: true, // Creates a dropdown to control month
+  selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+</script>

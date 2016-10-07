@@ -1,0 +1,49 @@
+<div class="mt">
+  <div class="showback">
+    <h4>
+      <i class="fa fa-angle-right"></i>
+      Plantas
+    </h4>
+    <div class="row">
+      <% @plants.each do |plant| %>
+        <div class="col-md-12">
+          <div class="panel panel-default grey-bg">
+            <div class="panel-body">
+              <div class="panel-title">
+                 <%= plant.sectors.first.detail_contract.contract.company.name.capitalize %>, Planta: <%= plant.name %>
+                 <div class="pull-right">
+                   <%= link_to edit_plant_path(plant), class: "label label-warning" do %>
+                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                     Editar
+                   <% end %>
+                 </div>
+                 <p><%= plant.address.capitalize + ' #' + plant.number + ', ' + plant.commune.capitalize %></p>
+               </div>
+               <div class="task-content">
+                 <ul id="sortable" class="task-list ui-sortable">
+                   <% Sector.where(plant_id: plant.id).each do |s| %>
+                     <li class="list-success">
+                       <div class="task-title">
+                         <span class="task-title-sp"><%= s.name.capitalize %></span>
+                         <div class="pull-right">
+                           <%= link_to sector_path(s), class: "btn btn-success btn-xs fa fa-eye" do %>
+                             <i class="fa fa-eye" aria-hidden="true"></i>
+                             Mostrar
+                           <% end %>
+                           <%= link_to edit_sector_path(s), class: "btn btn-warning btn-xs fa fa-pencil" do %>
+                             Editar
+                           <% end %>
+                         </div>
+                       </div>
+                     </li>
+                   <% end %>
+                 </ul>
+               </div>
+              </div>
+            </div>
+          </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @photo_sector.name %>
+</p>
+
+<p>
+  <strong>Type file:</strong>
+  <%= @photo_sector.type_file %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @photo_sector.descripcion %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= @photo_sector.document %>
+</p>
+
+<p>
+  <strong>Sector:</strong>
+  <%= @photo_sector.sector %>
+</p>
+
+<%= link_to 'Edit', edit_photo_sector_path(@photo_sector) %> |
+<%= link_to 'Back', photo_sectors_path %>

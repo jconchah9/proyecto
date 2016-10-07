@@ -1,0 +1,11 @@
+<%= render 'menu' %>
+<div class="card z-depth-5">
+  <div class="card-content">
+    <div class="card-title">Editar Solicitud</div>
+      <%= render 'form', petition: @petition %>
+  </div>
+  <div class="card-action">
+    <%= link_to 'Mostrar', @petition %>
+    <%= link_to 'Atras', :back %>
+  </div>
+</div>

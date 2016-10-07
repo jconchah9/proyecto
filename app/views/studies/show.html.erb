@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="card black-text">
+    <div class="card-action">
+      <%= link_to 'Editar', edit_study_path(@study) %>
+      <%= link_to 'Volver a la Solicitud', history_admin_index_url(id: @study.petition_id) %>
+    </div>
+    <div class="card-content">
+      <div class="left">
+        <p id="notice"><%= notice %></p>
+        <p><strong>Resumen: </strong><%= @study.summary %></p>
+        <p><strong>Estado: </strong><%= @study.state %></p>
+        <p><strong>Solicitud: </strong><%= link_to 'Ver', petition_path(@study.petition_id), class:'orange-text' %></p>
+      </div>
+      <embed src='<%= @study.feasibility %>' style="width:100%;" height="1200">
+    </div>
+  </div>
+</div>

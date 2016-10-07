@@ -1,0 +1,3 @@
+# Comment
+module DetailContratsHelper
+end

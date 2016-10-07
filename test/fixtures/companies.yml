@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  rubro: MyString
+  rut: MyString
+  user: 
+
+two:
+  nombre: MyString
+  rubro: MyString
+  rut: MyString
+  user: 

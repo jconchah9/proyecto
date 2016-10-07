@@ -1,0 +1,43 @@
+<div class="mt">
+  <div class="showback">
+    <h4>
+      <i class="fa fa-angle-right"></i>
+      Solicitudes
+    </h4>
+    <div class="container-fluid">
+      <div class="pull-right">
+        <%= link_to 'Agregar Solicitud', new_petition_path, class: 'btn btn-warning'%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h5>
+          <i class="fa fa-angle-right"></i>
+          Solicitudes Pendientes
+        </h5>
+        <table class="table table-responsive table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Fecha Recepcion</th>
+              <th>Nombre Contacto</th>
+              <th>Nombre de la empresa</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @petitions.each do |p| %>
+            <tr class="<%= p.state == 'pendiente' ? 'info' : '' %>">
+              <td><%= p.id %></td>
+              <td><%= p.created_at.strftime('%d-%m-%Y %H:%m') %></td>
+              <td><%= p.client.name %></td>
+              <td><%= p.client.enterprise %></td>
+              <td><%= link_to "Ver historial",history_admin_index_url(id: p.id), class: 'label label-success' %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

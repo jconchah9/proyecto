@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="card black-text">
+    <div class="card-content">
+      <p>Estado:<%= @budget.state %></p>
+      <p>Resumen:<%= @budget.summary %></p>
+    </div>
+    <div class="card-action">
+      <%= link_to 'Editar', edit_budget_path(@budget) %>
+      <%= link_to 'Atras', history_admin_index_path(id: @budget.analysis.calendar.study.petition_id) %>
+    </div>
+  </div>
+</div>

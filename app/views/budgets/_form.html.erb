@@ -1,0 +1,22 @@
+<%= form_for(budget) do |f| %>
+  <% if budget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
+
+      <ul>
+      <% budget.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :summaty, 'Resumen', class:'active' %>
+    <%= f.text_area :summary, class:"materialize-textarea", required:true, placeholder:"Describa un resumen del presupuesto" %>
+  </div>
+
+  <%= f.hidden_field :analysis_id, value:params[:id] %>
+  <div class="form-group">
+    <%= f.submit "Guardar", class:"btn green"%>
+  </div>
+<% end %>

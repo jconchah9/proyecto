@@ -1,0 +1,44 @@
+<%@analisis.each do |a| %>
+<%
+  e = 'cd-warning' if a.state=='en_curso'
+  e = 'cd-success' if a.state=='aceptada'
+  e = 'cd-danger' if a.state=='rechazada'
+%>
+  <div class="cd-timeline-block">
+    <div class="cd-timeline-img <%= e %>">
+    </div>
+    <div class="cd-timeline-content">
+      <div class="panel">
+        <div class="panel-body">
+          <div class="panel-title">
+            Analisis <%= a.id%>, del calendario <%= a.calendar_id %>
+          </div>
+          <p>Este analisis esta  <%= a.state %></p>
+          <p>Resumen: <%= a.summary %></p>
+          <%= render 'analyses/shared/modal-images', analysis_id: a.id %>
+          <%= render 'analyses/shared/modal-pdf', analysis_id: a.id %>
+          <div class="card-action">
+            <% if a.state=="en_curso" %>
+              <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Cambiar Estado <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Aceptar","/analyses/#{a.id}/aceptar", method: :put%></li>
+                  <li><%= link_to "Rechazar","/analyses/#{a.id}/rechazar",method: :put%></li>
+                </ul>
+              </div>
+              <p>
+                <%= link_to "Agregar Documentos",new_document_analysis_path(analysis_id: a.id), class: 'btn btn-default' %>
+              </p>
+             <% end %>
+            <% if a.state=='aceptada' %>
+              <%= link_to "Registrar Presupuesto", new_budget_document_path(analysis_id: a.id), class: 'btn btn-default' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <span class="cd-date"><%= a.created_at.strftime('%d-%m-%Y %H:%m') %></span>
+    </div>
+  </div>
+<% end %>

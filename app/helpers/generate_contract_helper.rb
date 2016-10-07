@@ -1,0 +1,2 @@
+module GenerateContractHelper
+end

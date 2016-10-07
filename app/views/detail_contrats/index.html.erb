@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Detail Contrats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Qty sensores</th>
+      <th>Contract</th>
+      <th>Group</th>
+      <th>Sector</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @detail_contrats.each do |detail_contrat| %>
+      <tr>
+        <td><%= detail_contrat.start_date %></td>
+        <td><%= detail_contrat.end_date %></td>
+        <td><%= detail_contrat.qty_sensores %></td>
+        <td><%= detail_contrat.contract %></td>
+        <td><%= detail_contrat.group %></td>
+        <td><%= detail_contrat.sector %></td>
+        <td><%= link_to 'Show', detail_contrat %></td>
+        <td><%= link_to 'Edit', edit_detail_contrat_path(detail_contrat) %></td>
+        <td><%= link_to 'Destroy', detail_contrat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Detail Contrat', new_detail_contrat_path %>

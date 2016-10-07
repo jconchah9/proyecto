@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  encoding: unicode
+
+development:
+  <<: *default
+  database: agro_development
+  username: pguser
+  password: admin
+  host: agroeffect.cl
+
+test:
+  <<: *default
+  database: agro_test
+  username: pguser
+  password: admin
+  host: agroeffect.cl
+
+production:
+  <<: *default
+  database: agro_production

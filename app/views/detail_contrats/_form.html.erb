@@ -1,0 +1,47 @@
+<%= form_for(detail_contrat) do |f| %>
+  <% if detail_contrat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(detail_contrat.errors.count, "error") %> prohibited this detail_contrat from being saved:</h2>
+
+      <ul>
+      <% detail_contrat.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.datetime_select :start_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_date %>
+    <%= f.datetime_select :end_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :qty_sensores %>
+    <%= f.number_field :qty_sensores %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contract_id %>
+    <%= f.text_field :contract_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :group_id %>
+    <%= f.text_field :group_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sector_id %>
+    <%= f.text_field :sector_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
